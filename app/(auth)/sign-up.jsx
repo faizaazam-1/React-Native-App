@@ -5,7 +5,7 @@ import { images } from "../../constants";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
-import { creatUser } from "../../lib/appwrite";
+import { createUser } from "../../lib/appwrite";
 
 const SignUp = () => {
   const [isSubmitting, setSubmitting] = useState(false);
@@ -21,7 +21,7 @@ const SignUp = () => {
 
     setSubmitting(true);
     try {
-      const result = await creatUser(form.email, form.password, form.username);
+      const result = await createUser(form.email, form.password, form.username);
       // setUser(result);
       // setIsLogged(true);
 
