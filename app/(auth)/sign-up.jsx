@@ -5,6 +5,7 @@ import { images } from "../../constants";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
 import { Link } from "expo-router";
+import { creatUser } from "../../lib/appwrite";
 
 const SignUp = () => {
   const [isSubmitting, setSubmitting] = useState(false);
@@ -13,7 +14,9 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-  const submit = () => {};
+  const submit = () => {
+    creatUser();
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -64,7 +67,7 @@ const SignUp = () => {
               href="/sign-in"
               className="text-lg font-psemibold text-secondary"
             >
-              SignIn
+              SignUp
             </Link>
           </View>
         </View>
