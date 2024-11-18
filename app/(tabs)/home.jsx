@@ -3,10 +3,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { FlatList, Image, RefreshControl, Text, View } from "react-native";
 
 import { images } from "../../constants";
-import useAppwrite from "../../lib/useAppwrite";
 import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
-import { EmptyState, SearchInput, Trending, VideoCard } from "../../components";
+import EmptyState from "../../components/EmptyState";
+import SearchInput from "../../components/SearchInput";
+import Trending from "../../components/Trending";
+import VideoCard from "../../components/VideoCard";
 
+import useAppwrite from "../../lib/useAppwrite";
 const Home = () => {
   const { data: posts, refetch } = useAppwrite(getAllPosts);
   const { data: latestPosts } = useAppwrite(getLatestPosts);
@@ -39,7 +42,7 @@ const Home = () => {
             avatar={item.creator.avatar}
           />
         )}
-        ListHeaderComponent={() => (
+        ListHeaderComponent={
           <View className="flex my-6 px-4 space-y-6">
             <View className="flex justify-between items-start flex-row mb-6">
               <View>
@@ -70,7 +73,7 @@ const Home = () => {
               <Trending posts={latestPosts ?? []} />
             </View>
           </View>
-        )}
+        }
         ListEmptyComponent={() => (
           <EmptyState
             title="No Videos Found"
